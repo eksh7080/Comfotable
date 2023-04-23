@@ -1,13 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import ListData from '../../db/list.json'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import ListData from '../../db/list.json';
+import { ListItems } from '@/types/list';
 
-type ListData = {
-  data: string[]
-}
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ListData>
-) {
-  res.status(200).json(ListData)
+export default function handler(req: NextApiRequest, res: NextApiResponse<ListItems[]>) {
+  res.status(200).json(ListData);
 }
