@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import ListData from '../../db/list.json';
-import { ListItems } from 'types/list';
+import ListAllItems from 'db/listAll.json';
+import { ListAll } from 'types/list';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<ListItems[]>) {
-  res.status(200).json(ListData);
+export default function handler(req: NextApiRequest, res: NextApiResponse<ListAll>) {
+  res.status(200).json(ListAllItems);
 }
