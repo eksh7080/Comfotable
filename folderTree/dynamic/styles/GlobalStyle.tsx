@@ -1,6 +1,6 @@
 import { css, Global } from '@emotion/react';
 
-export const globalStyles = (
+const globalStyles = (
   <Global
     styles={css`
       html,
@@ -76,6 +76,25 @@ export const globalStyles = (
         font-size: 62.5%;
         box-sizing: border-box;
       }
+
+      .setting.NAVER_SEARCH_AD {
+        background: url('/images/social/naver.png') no-repeat center center/75%;
+        border: 1px solid #32cd32;
+        border-radius: 0.6rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        display: block;
+      }
+      .setting.FACEBOOK {
+        background: url('/images/social/facebook.png') no-repeat center center/75%;
+        border: 1px solid #87cefa;
+        border-radius: 0.6rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        display: block;
+      }
     `}
   />
 );
+
+export default globalStyles;

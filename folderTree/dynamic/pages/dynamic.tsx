@@ -13,55 +13,45 @@ const Container = styled.section`
     cursor: pointer;
   }
 
-  & ul {
+  input[type='checkbox'] {
+    cursor: pointer;
+  }
+
+  & .listWrap {
+    padding-left: 2rem;
+    padding-top: 2rem;
+    font-size: 1.4rem;
     & li {
-      & .rootList {
+      .rootList {
         display: flex;
-        min-height: 40px;
-        padding: 8px 16px;
+        min-height: 4rem;
+        padding: 0.8rem 1.6rem;
+        max-width: 100%;
         width: 100%;
+        justify-content: center;
 
         &:hover {
-          background: #f3f3f3;
-          border-radius: 6px;
+          background: rgba(205, 209, 228);
+          border-radius: 0.6rem;
           cursor: pointer;
-        }
-
-        & li {
-          color: rgba(0, 0, 0, 0.8);
-          @include font-variable(13px, 500);
-
-          & article {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
         }
 
         & li:first-of-type {
           display: flex;
           flex-direction: row;
           align-items: center;
-          gap: 4px;
+          gap: 1rem;
 
-          & .utilWrap {
+          .utilWrap {
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 4px;
+            gap: 0.4rem;
 
-            & .arrow_drop_wrap {
-              width: 24px;
-              height: 24px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              background-color: #fff;
-              border-radius: 6px;
-              & .arrow_drop {
-                margin-right: 0;
-              }
+            .arrowWrap {
+              width: 2.4rem;
+              height: 2.4rem;
+              border-radius: 0.6rem;
             }
           }
 
@@ -69,100 +59,204 @@ const Container = styled.section`
             display: flex;
             flex-direction: row;
             align-items: center;
-            padding: 0px;
-            gap: 8px;
+            gap: 0.4rem;
 
             & .channelSymbol {
-              width: 24px;
-              height: 24px;
+              width: 2.4rem;
+              height: 2.4rem;
             }
           }
         }
 
         & li:last-of-type {
           display: flex;
-          flex-direction: row;
-          justify-content: flex-end;
           align-items: center;
-          padding: 0px;
-          gap: 32px;
+          gap: 1rem;
         }
       }
 
       & .oneDepthWrap {
-        & li {
-          & .oneList {
+        li {
+          .oneList {
             display: flex;
-            min-height: 40px;
-            padding: 8px 16px;
+            min-height: 4rem;
+            max-width: 100%;
             width: 100%;
+            padding: 0.8rem 1.6rem;
+            justify-content: center;
 
             &:hover {
-              background: #f3f3f3;
-              border-radius: 6px;
+              background: rgba(205, 209, 228);
+              border-radius: 0.6rem;
               cursor: pointer;
             }
 
-            & li {
-              color: rgba(0, 0, 0, 0.8);
-              @include font-variable(13px, 500);
-
-              & article {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-              }
-            }
-
-            & li:first-of-type {
+            li:first-of-type {
               display: flex;
               flex-direction: row;
               align-items: center;
-              gap: 4px;
-              padding-left: 24px;
+              gap: 1rem;
 
-              & .utilWrap {
+              .utilWrap {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap: 4px;
+                gap: 0.4rem;
 
-                & .arrow_drop_wrap {
-                  width: 24px;
-                  height: 24px;
+                .arrowWrap {
+                  width: 2.4rem;
+                  height: 2.4rem;
+                  border-radius: 0.6rem;
+                }
+
+                .channelSymbol {
+                  width: 2.4rem;
+                  height: 2.4rem;
+                }
+              }
+
+              .displayInfo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.4rem;
+              }
+            }
+
+            li:last-of-type {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+            }
+          }
+
+          & .twoDepthWrap {
+            li {
+              .twoList {
+                display: flex;
+                min-height: 4rem;
+                padding: 0.8rem 1.6rem;
+                max-width: 100%;
+                width: 100%;
+                justify-content: center;
+
+                &:hover {
+                  background: rgba(205, 209, 228);
+                  border-radius: 0.6rem;
+                  cursor: pointer;
+                }
+
+                li:first-of-type {
                   display: flex;
-                  flex-direction: column;
-                  justify-content: center;
+                  flex-direction: row;
                   align-items: center;
-                  background-color: #fff;
-                  border-radius: 6px;
-                  & .arrow_drop {
-                    margin-right: 0;
+                  padding-left: 7.6rem;
+                  gap: 1rem;
+
+                  .utilWrap {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 0.4rem;
+
+                    .arrowWrap {
+                      width: 2.4rem;
+                      height: 2.4rem;
+                      border-radius: 0.6rem;
+                    }
+                  }
+
+                  .displayInfo {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 0.4rem;
+                  }
+
+                  .channelSymbol {
+                    .tag {
+                      font-weight: 600;
+                      padding: 0.8rem 1.6rem;
+                      border-radius: 0.6rem;
+                      border: 1px solid #87cefa;
+                    }
+                  }
+                }
+
+                li:last-of-type {
+                  display: flex;
+                  align-items: center;
+                  gap: 1rem;
+                }
+              }
+
+              .threeDepthWrap {
+                li {
+                  .threeList {
+                    display: flex;
+                    min-height: 4rem;
+                    padding: 0.8rem 1.6rem;
+                    max-width: 100%;
+                    width: 100%;
+                    justify-content: center;
+
+                    &:hover {
+                      background: rgba(205, 209, 228);
+                      border-radius: 0.6rem;
+                      cursor: pointer;
+                    }
+
+                    li:first-of-type {
+                      display: flex;
+                      flex-direction: row;
+                      align-items: center;
+                      padding-left: 10.4rem;
+                      gap: 1rem;
+
+                      .utilWrap {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 0.4rem;
+
+                        .arrowWrap {
+                          width: 2.4rem;
+                          height: 2.4rem;
+                          border-radius: 0.6rem;
+                        }
+                      }
+
+                      .displayInfo {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 0.4rem;
+                      }
+
+                      .channelSymbol {
+                        .tag {
+                          font-weight: 600;
+                          padding: 0.8rem 1.6rem;
+                          border-radius: 0.6rem;
+                          border: 1px solid #87cefa;
+                        }
+                      }
+                    }
+
+                    li:last-of-type {
+                      display: flex;
+                      align-items: center;
+                      gap: 1rem;
+                    }
+                  }
+
+                  .threeListFacebook {
+                    li:first-of-type {
+                      padding-left: 14.4rem;
+                    }
                   }
                 }
               }
-
-              & .displayInfo {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 0px;
-                gap: 8px;
-
-                & .channelSymbol {
-                  width: 24px;
-                  height: 24px;
-                }
-              }
-            }
-
-            & li:last-of-type {
-              display: flex;
-              flex-direction: row;
-              justify-content: flex-end;
-              align-items: center;
-              padding: 0px;
-              gap: 32px;
             }
           }
         }
@@ -190,7 +284,7 @@ const Dynamic = () => {
   return (
     <Container>
       <h1 onClick={() => router.back()}>뒤로 가기</h1>
-      <ul>
+      <ul className="listWrap">
         {!listFetching &&
           listItems.map((rootItem: ListTreeItems, rootIndex) => (
             <li key={rootIndex}>
@@ -199,30 +293,26 @@ const Dynamic = () => {
                   <ul className="rootList">
                     <li>
                       <div className="utilWrap">
-                        <div className="arrow_drop_wrap">
-                          <div className="arrow_drop">
-                            <Image src="/images/arrow/arrow_drop_up.svg" alt="create-arrow-up" priority width={24} height={24} />
-                          </div>
+                        <div className="arrowWrap">
+                          <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
                         </div>
                         <div>
                           <Image src="/images/folder/folder.svg" alt="GroupFolder" priority width={24} height={24} />
                         </div>
                       </div>
                       <div className="displayInfo">
-                        <div className="check_box">
-                          <div className="che_wrap f_a_c">
-                            <input type="checkbox" name="checkBox" id="root" />
-                            <label htmlFor="root"></label>
-                          </div>
-                        </div>
-                        <strong className="title">{rootItem.title}</strong>
+                        <article>
+                          <input type="checkbox" name="checkBox" id="root" />
+                          <label htmlFor="root"></label>
+                        </article>
+                        <strong>{rootItem.title}</strong>
                       </div>
                     </li>
                     <li>
-                      <article className="edit_date">{rootItem.udate}</article>
-                      <article className="creater">{rootItem.author}</article>
-                      <article className="create_date">{rootItem.cdate}</article>
-                      <article className="volume">{rootItem.volume}</article>
+                      <article>{rootItem.udate}</article>
+                      <article>{rootItem.author}</article>
+                      <article>{rootItem.cdate}</article>
+                      <article>{rootItem.volume}</article>
                     </li>
                   </ul>
                   <ul className="oneDepthWrap">
@@ -231,31 +321,154 @@ const Dynamic = () => {
                         <ul className="oneList">
                           <li>
                             <div className="utilWrap">
-                              <div className="arrow_drop_wrap">
-                                <div className="arrow_drop">
-                                  <Image src="/images/arrow/arrow_drop_up.svg" alt="create-arrow-up" priority width={24} height={24} />
-                                </div>
+                              <div className="arrowWrap">
+                                <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
                               </div>
-                              <div>
-                                <Image src="/images/folder/folder.svg" alt="GroupFolder" priority width={24} height={24} />
+                              <div className="channelSymbol">
+                                <span className={`setting ${oneItem.type}`}></span>
                               </div>
                             </div>
                             <div className="displayInfo">
-                              <div className="check_box">
-                                <div className="che_wrap f_a_c">
-                                  <input type="checkbox" name="checkBox" id="one" />
-                                  <label htmlFor="one"></label>
-                                </div>
-                              </div>
-                              <strong className="title">{oneItem.title}</strong>
+                              <article>
+                                <input type="checkbox" name="checkBox" id="one" />
+                                <label htmlFor="one"></label>
+                              </article>
+                              <strong>{oneItem.title}</strong>
                             </div>
                           </li>
                           <li>
-                            <article className="edit_date">{oneItem.udate}</article>
-                            <article className="creater">{oneItem.author}</article>
-                            <article className="create_date">{oneItem.cdate}</article>
-                            <article className="volume">{oneItem.volume}</article>
+                            <article>{oneItem.udate}</article>
+                            <article>{oneItem.author}</article>
+                            <article>{oneItem.cdate}</article>
+                            <article>{oneItem.volume}</article>
                           </li>
+                        </ul>
+                        <ul className="twoDepthWrap">
+                          {oneItem.child?.map((twoItem, twoIndex) => (
+                            <li key={twoIndex}>
+                              <ul className="twoList">
+                                <li>
+                                  <div className="utilWrap">
+                                    <div className="arrowWrap">
+                                      <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                                    </div>
+                                    <div>
+                                      <input type="checkbox" name="checkBox" id="two" />
+                                      <label htmlFor="two"></label>
+                                    </div>
+                                  </div>
+                                  <div className="displayInfo">
+                                    <div className="channelSymbol">
+                                      <p className="tag">{twoItem.category}</p>
+                                    </div>
+                                    <strong>{twoItem.name}</strong>
+                                  </div>
+                                </li>
+                                <li>
+                                  <article>{oneItem.udate}</article>
+                                  <article>{oneItem.author}</article>
+                                  <article>{oneItem.cdate}</article>
+                                  <article>{twoItem.volume}</article>
+                                </li>
+                              </ul>
+                              <ul className="threeDepthWrap">
+                                {oneItem.type === 'NAVER_SEARCH_AD'
+                                  ? twoItem.child?.map((threeItem, threeIndex) => (
+                                      <li key={threeIndex}>
+                                        <ul className="threeList">
+                                          <li>
+                                            <div className="utilWrap">
+                                              <div className="arrowWrap">
+                                                <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="checkBox" id="two" />
+                                                <label htmlFor="two"></label>
+                                              </div>
+                                            </div>
+                                            <div className="displayInfo">
+                                              <div className="channelSymbol">
+                                                <p className="tag">{threeItem.category}</p>
+                                              </div>
+                                              <strong>{threeItem.name}</strong>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <article>{oneItem.udate}</article>
+                                            <article>{oneItem.author}</article>
+                                            <article>{oneItem.cdate}</article>
+                                            <article>{threeItem.volume}</article>
+                                          </li>
+                                        </ul>
+                                        <div classNAme="fourDepthWrap">
+                                          {threeItem.child?.map((fourItem, fourIndex) => (
+                                            <ul key={fourIndex}>
+                                              <li>
+                                                <div className="utilWrap">
+                                                  <div className="arrowWrap">
+                                                    <Image
+                                                      src="/images/arrow/arrow_drop_up.svg"
+                                                      alt="arrow"
+                                                      priority
+                                                      width={24}
+                                                      height={24}
+                                                    />
+                                                  </div>
+                                                  <div>
+                                                    <input type="checkbox" name="checkBox" id="two" />
+                                                    <label htmlFor="two"></label>
+                                                  </div>
+                                                </div>
+                                                <div className="displayInfo">
+                                                  <div className="channelSymbol">
+                                                    <p className="tag">{fourItem.category}</p>
+                                                  </div>
+                                                  <strong>{fourItem.name}</strong>
+                                                </div>
+                                              </li>
+                                              <li>
+                                                <article>{oneItem.udate}</article>
+                                                <article>{oneItem.author}</article>
+                                                <article>{oneItem.cdate}</article>
+                                                <article>{fourItem.volume}</article>
+                                              </li>
+                                            </ul>
+                                          ))}
+                                        </div>
+                                      </li>
+                                    ))
+                                  : twoItem.child?.map((threeItem, threeIndex) => (
+                                      <li key={threeIndex}>
+                                        <ul className="threeListFacebook threeList">
+                                          <li>
+                                            <div className="utilWrap">
+                                              <div className="arrowWrap">
+                                                <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                                              </div>
+                                              <div>
+                                                <input type="checkbox" name="checkBox" id="two" />
+                                                <label htmlFor="two"></label>
+                                              </div>
+                                            </div>
+                                            <div className="displayInfo">
+                                              <div className="channelSymbol">
+                                                <p className="tag">{threeItem.category}</p>
+                                              </div>
+                                              <strong>{threeItem.name}</strong>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <article>{oneItem.udate}</article>
+                                            <article>{oneItem.author}</article>
+                                            <article>{oneItem.cdate}</article>
+                                            <article>{threeItem.volume}</article>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                    ))}
+                              </ul>
+                            </li>
+                          ))}
                         </ul>
                       </li>
                     ))}

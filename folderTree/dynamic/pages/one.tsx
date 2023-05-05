@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react';
-import { ListItems } from 'types/list';
+import { ListItemAll, ListItems } from 'types/list';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -95,14 +95,14 @@ const Container = styled.section`
 const OneDepth = () => {
   const router = useRouter();
 
-  const [listItems, setListItems] = useState<ListItems[]>([]);
+  const [listItems, setListItems] = useState<ListItemAll[]>([]);
 
-  const { isFetching: listFetching } = useQuery(['list'], async () => await axios.get(`/api/list`), {
+  const { isFetching: listFetching } = useQuery(['list'], async () => await axios.get(`/api/list`).data, {
     retry: 0,
     refetchOnWindowFocus: false,
     onSuccess(item) {
-      setListItems(item.data);
-      console.log(item.data, 'item');
+      setListItems([...item.file, ...item.folder]);
+      console.log(item, 'item');
     },
   });
 

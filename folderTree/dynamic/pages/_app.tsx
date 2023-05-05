@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { globalStyles } from 'styles/GlobalStyle';
+import globalStyles from 'styles/GlobalStyle';
 import theme from 'styles/theme';
 
 export default function App({ Component, pageProps }: AppProps) {
