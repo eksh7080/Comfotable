@@ -97,7 +97,7 @@ const OneDepth = () => {
 
   const [listItems, setListItems] = useState<ListItemAll[]>([]);
 
-  const { isFetching: listFetching } = useQuery(['list'], async () => await axios.get(`/api/list`).data, {
+  const { isFetching: listFetching } = useQuery(['listAll'], async () => (await axios.get(`/api/list`)).data, {
     retry: 0,
     refetchOnWindowFocus: false,
     onSuccess(item) {

@@ -5,6 +5,9 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
+  scripts: {
+    lint: 'next lint',
+  },
 };
 
 module.exports = nextConfig;
