@@ -38,7 +38,7 @@ const Dynamic = () => {
                           <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
                         </div>
                         <div>
-                          <Image src="/images/folder/folder.svg" alt="GroupFolder" priority width={24} height={24} />
+                          <Image src="/images/folder/dessert.png" alt="GroupFolder" priority width={24} height={24} />
                         </div>
                       </div>
                       <div className="displayInfo">
@@ -113,7 +113,7 @@ const Dynamic = () => {
                                 </li>
                               </ul>
                               <ul className="threeDepthWrap">
-                                {oneItem.type === 'NAVER_SEARCH_AD'
+                                {oneItem.type === 'CAKE'
                                   ? twoItem.child?.map((threeItem, threeIndex) => (
                                       <li key={threeIndex}>
                                         <ul className="threeList">
@@ -187,8 +187,8 @@ const Dynamic = () => {
                                                 <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
                                               </div>
                                               <div>
-                                                <input type="checkbox" name="checkBox" id="two" />
-                                                <label htmlFor="two"></label>
+                                                <input type="checkbox" name="checkBox" id="three" />
+                                                <label htmlFor="three"></label>
                                               </div>
                                             </div>
                                             <div className="displayInfo">
@@ -221,8 +221,8 @@ const Dynamic = () => {
                                                       />
                                                     </div>
                                                     <div>
-                                                      <input type="checkbox" name="checkBox" id="two" />
-                                                      <label htmlFor="two"></label>
+                                                      <input type="checkbox" name="checkBox" id="four" />
+                                                      <label htmlFor="four"></label>
                                                     </div>
                                                   </div>
                                                   <div className="displayInfo">
@@ -239,6 +239,41 @@ const Dynamic = () => {
                                                   <article>{fourItem.volume}</article>
                                                 </li>
                                               </ul>
+                                              <div className="fiveDepthWrap">
+                                                {fourItem.child?.map((fiveItem, fiveIndex) => (
+                                                  <ul key={fiveIndex} className="fiveListFacebook">
+                                                    <li>
+                                                      <div className="utilWrap">
+                                                        <div className="arrowWrap">
+                                                          <Image
+                                                            src="/images/arrow/arrow_drop_up.svg"
+                                                            alt="arrow"
+                                                            priority
+                                                            width={24}
+                                                            height={24}
+                                                          />
+                                                        </div>
+                                                        <div>
+                                                          <input type="checkbox" name="checkBox" id="five" />
+                                                          <label htmlFor="five"></label>
+                                                        </div>
+                                                      </div>
+                                                      <div className="displayInfo">
+                                                        <div className="channelSymbol">
+                                                          <p className="tag">{fiveItem.category}</p>
+                                                        </div>
+                                                        <strong>{fiveItem.name}</strong>
+                                                      </div>
+                                                    </li>
+                                                    <li>
+                                                      <article>{oneItem.udate}</article>
+                                                      <article>{oneItem.author}</article>
+                                                      <article>{oneItem.cdate}</article>
+                                                      <article>{fiveItem.volume}</article>
+                                                    </li>
+                                                  </ul>
+                                                ))}
+                                              </div>
                                             </li>
                                           ))}
                                         </ul>

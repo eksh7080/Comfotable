@@ -361,6 +361,65 @@ export const Container = styled.section`
                         gap: 1rem;
                       }
                     }
+
+                    .fiveDepthWrap {
+                      .fiveListFacebook {
+                        display: flex;
+                        min-height: 4rem;
+                        padding: 0.8rem 1.6rem;
+                        max-width: 100%;
+                        width: 100%;
+
+                        &:hover {
+                          background: rgba(205, 209, 228);
+                          border-radius: 0.6rem;
+                          cursor: pointer;
+                        }
+
+                        li:first-of-type {
+                          display: flex;
+                          flex-direction: row;
+                          align-items: center;
+                          padding-left: 14.8rem;
+                          gap: 1rem;
+
+                          .utilWrap {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 0.4rem;
+
+                            .arrowWrap {
+                              width: 2.4rem;
+                              height: 2.4rem;
+                              border-radius: 0.6rem;
+                            }
+                          }
+
+                          .displayInfo {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 0.4rem;
+                          }
+
+                          .channelSymbol {
+                            .tag {
+                              font-weight: 600;
+                              padding: 0.8rem 1.6rem;
+                              border-radius: 0.6rem;
+                              border: 1px solid #87cefa;
+                            }
+                          }
+                        }
+
+                        li:last-of-type {
+                          display: flex;
+                          align-items: center;
+                          gap: 1rem;
+                        }
+                      }
+                    }
                   }
                 }
               }
