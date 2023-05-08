@@ -22,6 +22,7 @@ export const Container = styled.section`
         padding: 0.8rem 1.6rem;
         max-width: 100%;
         width: 100%;
+        gap: 2rem;
 
         &:hover {
           background: rgba(205, 209, 228);
@@ -76,6 +77,7 @@ export const Container = styled.section`
             max-width: 100%;
             width: 100%;
             padding: 0.8rem 1.6rem;
+            gap: 2rem;
 
             &:hover {
               background: rgba(205, 209, 228);
@@ -131,6 +133,7 @@ export const Container = styled.section`
                 padding: 0.8rem 1.6rem;
                 max-width: 100%;
                 width: 100%;
+                gap: 2rem;
 
                 &:hover {
                   background: rgba(205, 209, 228);
@@ -190,6 +193,7 @@ export const Container = styled.section`
                     padding: 0.8rem 1.6rem;
                     max-width: 100%;
                     width: 100%;
+                    gap: 2rem;
 
                     &:hover {
                       background: rgba(205, 209, 228);
@@ -254,6 +258,7 @@ export const Container = styled.section`
                       padding: 0.8rem 1.6rem;
                       max-width: 100%;
                       width: 100%;
+                      gap: 2rem;
 
                       &:hover {
                         background: rgba(205, 209, 228);
@@ -311,6 +316,7 @@ export const Container = styled.section`
                       padding: 0.8rem 1.6rem;
                       max-width: 100%;
                       width: 100%;
+                      gap: 2rem;
 
                       &:hover {
                         background: rgba(205, 209, 228);
@@ -369,6 +375,7 @@ export const Container = styled.section`
                         padding: 0.8rem 1.6rem;
                         max-width: 100%;
                         width: 100%;
+                        gap: 2rem;
 
                         &:hover {
                           background: rgba(205, 209, 228);

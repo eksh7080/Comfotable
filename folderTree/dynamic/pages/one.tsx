@@ -123,7 +123,7 @@ const OneDepth = () => {
                     </div>
                   </div>
                   <div>
-                    <Image src="/images/folder/folder.svg" alt="GroupFolder" priority width={24} height={24} />
+                    <Image src="/images/folder/dessert.png" alt="GroupFolder" priority width={24} height={24} />
                   </div>
                 </div>
                 <div className="displayInfo">
