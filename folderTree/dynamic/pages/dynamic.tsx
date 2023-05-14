@@ -13,6 +13,7 @@ const Dynamic = () => {
   const [isToggle, setIsToggle] = useState(false);
   const [rootToggleStatus, setRootToggleStatus] = useState({});
   const [oneToggleStatus, setOneToggleStatus] = useState({});
+  const [twoToggleStatus, setTwoToggleStatus] = useState({});
 
   const onToggleArrow = (_index: number) => {
     console.log(_index);
@@ -127,8 +128,21 @@ const Dynamic = () => {
                                   <ul className="twoList">
                                     <li>
                                       <div className="utilWrap">
-                                        <div className="arrowWrap">
-                                          <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                                        <div
+                                          className="arrowWrap"
+                                          className={`arrowWrap ${twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? 'open' : ''}`}
+                                          onClick={() => {
+                                            setTwoToggleStatus((prevState) => ({
+                                              ...prevState,
+                                              [`${rootIndex}-${oneIndex}-${twoIndex}`]: !prevState[`${rootIndex}-${oneIndex}-${twoIndex}`],
+                                            }));
+                                          }}
+                                        >
+                                          {twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? (
+                                            <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
+                                          ) : (
+                                            <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                                          )}
                                         </div>
                                         <div>
                                           <input type="checkbox" name="checkBox" id="two" />
@@ -149,7 +163,14 @@ const Dynamic = () => {
                                       <article>{twoItem.volume}</article>
                                     </li>
                                   </ul>
-                                  <FolderTree oneItem={oneItem} twoItem={twoItem} />
+                                  <FolderTree
+                                    oneItem={oneItem}
+                                    twoItem={twoItem}
+                                    rootIndex={rootIndex}
+                                    oneIndex={oneIndex}
+                                    twoIndex={twoIndex}
+                                    twoToggleStatus={twoToggleStatus}
+                                  />
                                 </li>
                               ))}
                             </ul>
