@@ -45,8 +45,8 @@ const Dynamic = () => {
                     <li>
                       <div className="utilWrap">
                         <div
-                          // className="arrowWrap"
-                          className={`arrowWrap ${rootToggleStatus[rootIndex] ? 'open' : ''}`}
+                          className="arrowWrap"
+                          // className={`arrowWrap ${rootToggleStatus[rootIndex] ? 'open' : ''}`}
                           onClick={() => {
                             setRootToggleStatus((prevState) => ({
                               ...prevState,
@@ -87,8 +87,8 @@ const Dynamic = () => {
                             <li>
                               <div className="utilWrap">
                                 <div
-                                  // className="arrowWrap"
-                                  className={`arrowWrap ${oneToggleStatus[`${rootIndex}-${oneIndex}`] ? 'open' : ''}`}
+                                  className="arrowWrap"
+                                  // className={`arrowWrap ${oneToggleStatus[`${rootIndex}-${oneIndex}`] ? 'open' : ''}`}
                                   onClick={() => {
                                     setOneToggleStatus((prevState) => ({
                                       ...prevState,
@@ -130,7 +130,7 @@ const Dynamic = () => {
                                       <div className="utilWrap">
                                         <div
                                           className="arrowWrap"
-                                          className={`arrowWrap ${twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? 'open' : ''}`}
+                                          // className={`arrowWrap ${twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? 'open' : ''}`}
                                           onClick={() => {
                                             setTwoToggleStatus((prevState) => ({
                                               ...prevState,

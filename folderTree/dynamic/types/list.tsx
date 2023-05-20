@@ -37,7 +37,7 @@ export interface ListTreeItems {
   connect: number;
   status: number;
   title: string;
-  type: string;
+  type?: string;
   path_uuid: string;
   udate: string;
   volume: string;
