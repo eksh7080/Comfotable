@@ -3,16 +3,19 @@ export interface ListAll {
 }
 
 export interface ListItems {
-  author: string;
-  cdate: string;
-  title: string;
-  connect: number;
-  status: number;
-  type: string;
-  udate: string;
-  volume: string;
-  uuid: string;
-  advertiseData: AdvertiseData[];
+  author?: string;
+  cdate?: string;
+  connect?: number;
+  status?: number;
+  title?: string;
+  type?: string;
+  path_uuid?: string;
+  udate?: string;
+  volume?: string;
+  isfolder?: string;
+  file?: ListTreeItems[];
+  child?: ListTreeChildItems[];
+  // advertiseData: AdvertiseData[];
 }
 
 export interface AdvertiseData extends ChildrendItems {
@@ -34,8 +37,8 @@ export interface ListItemAll {
 export interface ListTreeItems {
   author: string;
   cdate: string;
-  connect: number;
-  status: number;
+  connect?: number;
+  status?: number;
   title: string;
   type?: string;
   path_uuid: string;

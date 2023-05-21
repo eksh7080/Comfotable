@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useState } from 'react';
-import { ListItemAll, ListItems } from 'types/list';
+import { ListItemAll, ListItems, ListTreeItems } from 'types/list';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -95,24 +95,25 @@ const Container = styled.section`
 const OneDepth = () => {
   const router = useRouter();
 
-  const [listItems, setListItems] = useState<ListItemAll[]>([]);
+  const [listItems, setListItems] = useState<ListItems[]>([]);
 
-  const { isFetching: listFetching } = useQuery(['listAll'], async () => (await axios.get(`/api/list`)).data, {
+  const { isFetching: listFetching } = useQuery<ListItemAll>(['list'], async () => (await axios.get(`/api/list`)).data, {
     retry: 0,
     refetchOnWindowFocus: false,
     onSuccess(item) {
       setListItems([...item.file, ...item.folder]);
-      console.log(item, 'item');
+
+      console.log(item.file, 'item', item);
     },
   });
 
-  console.log(listItems);
+  console.log(listItems, 'item item tiem tie');
 
   return (
     <Container>
       <h1 onClick={() => router.back()}>뒤로 가기</h1>
       <ul>
-        {listItems.map((rootItem, rootIndex) => (
+        {listItems.map((rootItem: ListItems, rootIndex: number) => (
           <li key={rootIndex}>
             <ul className="rootList">
               <li>

@@ -1,23 +1,20 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { ListAll, ListItemAll, ListTreeItems } from 'types/list';
+import { ListAll, ListItemAll, ListTreeChildItems, ListTreeItems } from 'types/list';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Container } from 'styles/folder/dynamicS';
 import FolderTree from 'components/FolderTree';
+import ListAllItems from 'db/listAll.json';
 
 const Dynamic = () => {
   const router = useRouter();
-  const [listItems, setListItems] = useState<ListItemAll[]>([]);
+  const [listItems, setListItems] = useState<ListTreeItems[]>([]);
   const [isToggle, setIsToggle] = useState(false);
-  const [rootToggleStatus, setRootToggleStatus] = useState({});
+  const [rootToggleStatus, setRootToggleStatus] = useState<{ number: boolean }>({ 0: false });
   const [oneToggleStatus, setOneToggleStatus] = useState({});
   const [twoToggleStatus, setTwoToggleStatus] = useState({});
-
-  const onToggleArrow = (_index: number) => {
-    console.log(_index);
-  };
 
   const { isFetching: listFetching } = useQuery<ListItemAll>(['list'], async () => (await axios.get(`/api/list`)).data, {
     retry: 0,
@@ -30,7 +27,7 @@ const Dynamic = () => {
   });
 
   console.log(listItems, '리스트 아이템');
-  console.log(rootToggleStatus, ' 토글 스테이터스 ', oneToggleStatus);
+  console.log(typeof rootToggleStatus, ' 토글 스테이터스 ', oneToggleStatus);
 
   return (
     <Container>
@@ -65,7 +62,7 @@ const Dynamic = () => {
                         </div>
                       </div>
                       <div className="displayInfo">
-                        <article>
+                        <article onChange={(e) => console.log(e)}>
                           <input type="checkbox" name="checkBox" id="root" />
                           <label htmlFor="root"></label>
                         </article>

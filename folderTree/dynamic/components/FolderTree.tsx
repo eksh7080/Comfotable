@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { SetStateAction, useState } from 'react';
 
 interface TreeProps {
-  oneItem: ListTreeItems[];
-  twoItem: ListTreeChildItems[];
+  oneItem: ListTreeItems;
+  twoItem: ListTreeChildItems;
   rootIndex: number;
   oneIndex: number;
   twoIndex: number;
@@ -19,7 +19,7 @@ const FolderTree = ({ oneItem, twoItem, rootIndex, oneIndex, twoIndex, twoToggle
     twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] && (
       <ul className="threeDepthWrap">
         {oneItem.type === 'CAKE'
-          ? twoItem.child?.map((threeItem, threeIndex) => (
+          ? twoItem.child?.map((threeItem: ListTreeChildItems, threeIndex: number) => (
               <li key={threeIndex}>
                 <ul className="threeList">
                   <li>
@@ -61,7 +61,7 @@ const FolderTree = ({ oneItem, twoItem, rootIndex, oneIndex, twoIndex, twoToggle
                 </ul>
                 {threeToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}-${threeIndex}`] && (
                   <div className="fourDepthWrap">
-                    {threeItem.child?.map((fourItem, fourIndex) => (
+                    {threeItem.child?.map((fourItem: ListTreeChildItems, fourIndex: number) => (
                       <ul key={fourIndex} className="fourList">
                         <li>
                           <div className="utilWrap">
@@ -89,7 +89,7 @@ const FolderTree = ({ oneItem, twoItem, rootIndex, oneIndex, twoIndex, twoToggle
                 )}
               </li>
             ))
-          : twoItem.child?.map((threeItem, threeIndex) => (
+          : twoItem.child?.map((threeItem: ListTreeChildItems, threeIndex: number) => (
               <li key={threeIndex}>
                 <ul className="threeListFacebook threeList">
                   <li>
@@ -131,7 +131,7 @@ const FolderTree = ({ oneItem, twoItem, rootIndex, oneIndex, twoIndex, twoToggle
                 </ul>
                 {threeToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}-${threeIndex}`] && (
                   <ul className="fourDepthWrap">
-                    {threeItem.child?.map((fourItem, fourIndex) => (
+                    {threeItem.child?.map((fourItem: ListTreeChildItems, fourIndex: number) => (
                       <li key={fourIndex}>
                         <ul className="fourListFacebook">
                           <li>
@@ -174,7 +174,7 @@ const FolderTree = ({ oneItem, twoItem, rootIndex, oneIndex, twoIndex, twoToggle
                         </ul>
                         {fourToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}-${threeIndex}-${fourIndex}`] && (
                           <div className="fiveDepthWrap">
-                            {fourItem.child?.map((fiveItem, fiveIndex) => (
+                            {fourItem.child?.map((fiveItem: ListTreeChildItems, fiveIndex: number) => (
                               <ul key={fiveIndex} className="fiveListFacebook">
                                 <li>
                                   <div className="utilWrap">
