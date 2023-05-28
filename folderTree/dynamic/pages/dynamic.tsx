@@ -15,6 +15,7 @@ const Dynamic = () => {
   const [rootToggleStatus, setRootToggleStatus] = useState<{ number: boolean }>({ 0: false });
   const [oneToggleStatus, setOneToggleStatus] = useState({});
   const [twoToggleStatus, setTwoToggleStatus] = useState({});
+  const [chkStatus, setChkStatus] = useState(false);
 
   const { isFetching: listFetching } = useQuery<ListItemAll>(['list'], async () => (await axios.get(`/api/list`)).data, {
     retry: 0,
@@ -25,6 +26,15 @@ const Dynamic = () => {
       console.log(item.file, 'item', item);
     },
   });
+
+  const onChangeBox = (e: React.ChangeEvent<HTMLDivElement>) => {
+    console.log(e.target.checked);
+    if (e.target.checked) {
+      setChkStatus(true);
+    } else {
+      setChkStatus(false);
+    }
+  };
 
   console.log(listItems, '리스트 아이템');
   console.log(typeof rootToggleStatus, ' 토글 스테이터스 ', oneToggleStatus);
@@ -43,7 +53,6 @@ const Dynamic = () => {
                       <div className="utilWrap">
                         <div
                           className="arrowWrap"
-                          // className={`arrowWrap ${rootToggleStatus[rootIndex] ? 'open' : ''}`}
                           onClick={() => {
                             setRootToggleStatus((prevState) => ({
                               ...prevState,
@@ -62,8 +71,8 @@ const Dynamic = () => {
                         </div>
                       </div>
                       <div className="displayInfo">
-                        <article onChange={(e) => console.log(e)}>
-                          <input type="checkbox" name="checkBox" id="root" />
+                        <article>
+                          <input type="checkbox" name="checkBox" id="root" onChange={(e) => onChangeBox(e)} />
                           <label htmlFor="root"></label>
                         </article>
                         <strong>{rootItem.title}</strong>
@@ -85,7 +94,6 @@ const Dynamic = () => {
                               <div className="utilWrap">
                                 <div
                                   className="arrowWrap"
-                                  // className={`arrowWrap ${oneToggleStatus[`${rootIndex}-${oneIndex}`] ? 'open' : ''}`}
                                   onClick={() => {
                                     setOneToggleStatus((prevState) => ({
                                       ...prevState,
@@ -105,7 +113,13 @@ const Dynamic = () => {
                               </div>
                               <div className="displayInfo">
                                 <article>
-                                  <input type="checkbox" name="checkBox" id="one" />
+                                  <input
+                                    type="checkbox"
+                                    name="checkBox"
+                                    id="one"
+                                    checked={chkStatus ? true : false}
+                                    defaultChecked={chkStatus ? true : false}
+                                  />
                                   <label htmlFor="one"></label>
                                 </article>
                                 <strong>{oneItem.title}</strong>
@@ -127,7 +141,6 @@ const Dynamic = () => {
                                       <div className="utilWrap">
                                         <div
                                           className="arrowWrap"
-                                          // className={`arrowWrap ${twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? 'open' : ''}`}
                                           onClick={() => {
                                             setTwoToggleStatus((prevState) => ({
                                               ...prevState,
