@@ -11,11 +11,25 @@ export const Container = styled.section`
     cursor: pointer;
   }
 
-  & .listWrap {
+  .areaBox {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    min-height: 700px;
+
+    strong {
+      display: block;
+      font-size: 32rem;
+      line-height: 32rem;
+      padding-top: 4rem;
+    }
+  }
+
+  .listWrap {
     padding-left: 2rem;
     padding-top: 2rem;
     font-size: 1.4rem;
-    & li {
+    li {
       .rootList {
         display: flex;
         min-height: 4rem;
@@ -30,7 +44,7 @@ export const Container = styled.section`
           cursor: pointer;
         }
 
-        & li:first-of-type {
+        li:first-of-type {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -49,27 +63,27 @@ export const Container = styled.section`
             }
           }
 
-          & .displayInfo {
+          .displayInfo {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 0.4rem;
 
-            & .channelSymbol {
+            .channelSymbol {
               width: 2.4rem;
               height: 2.4rem;
             }
           }
         }
 
-        & li:last-of-type {
+        li:last-of-type {
           display: flex;
           align-items: center;
           gap: 1rem;
         }
       }
 
-      & .oneDepthWrap {
+      .oneDepthWrap {
         li {
           .oneList {
             display: flex;
@@ -125,7 +139,7 @@ export const Container = styled.section`
             }
           }
 
-          & .twoDepthWrap {
+          .twoDepthWrap {
             li {
               .twoList {
                 display: flex;
