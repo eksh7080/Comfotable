@@ -4,7 +4,7 @@ import { ListAll, ListItemAll, ListTreeChildItems, ListTreeItems } from 'types/l
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { Container } from 'styles/folder/dynamicS';
+import { Container, Footer, Header } from 'styles/folder/dynamicS';
 import FolderTree from 'components/FolderTree';
 import ListAllItems from 'db/listAll.json';
 import CAKE from '../public/images/dessert/cake.png';
@@ -42,18 +42,174 @@ const Dynamic = () => {
 
   return (
     <Container>
-      <h1 onClick={() => router.back()}>뒤로 가기</h1>
+      <Header>
+        <h1 onClick={() => router.back()}>뒤로 가기</h1>
+      </Header>
+
       <section className="areaBox">
         <strong>영역</strong>
       </section>
 
       <section className="interaction">
-        <ul className="listWrap">
-          {!listFetching &&
-            listItems.map((rootItem: ListTreeItems, rootIndex) => (
-              <li key={rootIndex}>
-                {rootItem.isfolder === 'Y' ? (
-                  <>
+        <article className="interArea">인터렉션 탑</article>
+        <div>
+          <ul className="listWrap">
+            {!listFetching &&
+              listItems.map((rootItem: ListTreeItems, rootIndex) => (
+                <li key={rootIndex}>
+                  {rootItem.isfolder === 'Y' ? (
+                    <>
+                      <ul className="rootList">
+                        <li>
+                          <div className="utilWrap">
+                            <div
+                              className="arrowWrap"
+                              onClick={() => {
+                                setRootToggleStatus((prevState) => ({
+                                  ...prevState,
+                                  [rootIndex]: !prevState[rootIndex],
+                                }));
+                              }}
+                            >
+                              {rootToggleStatus[rootIndex] ? (
+                                <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
+                              ) : (
+                                <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                              )}
+                            </div>
+                            <div>
+                              <Image src="/images/folder/dessert.png" alt="GroupFolder" priority width={24} height={24} />
+                            </div>
+                          </div>
+                          <div className="displayInfo">
+                            <article>
+                              <input type="checkbox" name="checkBox" id="root" onChange={(e) => onChangeBox(e)} />
+                              <label htmlFor="root"></label>
+                            </article>
+                            <strong>{rootItem.title}</strong>
+                          </div>
+                        </li>
+                        <li>
+                          <article>{rootItem.udate}</article>
+                          <article>{rootItem.author}</article>
+                          <article>{rootItem.cdate}</article>
+                          <article>{rootItem.volume}</article>
+                        </li>
+                      </ul>
+                      {rootToggleStatus[rootIndex] && (
+                        <ul className="oneDepthWrap">
+                          {rootItem.file.map((oneItem, oneIndex) => (
+                            <li key={oneIndex}>
+                              <ul className="oneList">
+                                <li>
+                                  <div className="utilWrap">
+                                    <div
+                                      className="arrowWrap"
+                                      onClick={() => {
+                                        setOneToggleStatus((prevState) => ({
+                                          ...prevState,
+                                          [`${rootIndex}-${oneIndex}`]: !prevState[`${rootIndex}-${oneIndex}`],
+                                        }));
+                                      }}
+                                    >
+                                      {oneToggleStatus[`${rootIndex}-${oneIndex}`] ? (
+                                        <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
+                                      ) : (
+                                        <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                                      )}
+                                    </div>
+                                    <div className="channelSymbol">
+                                      <span className={`setting ${oneItem.type}`}></span>
+                                    </div>
+                                  </div>
+                                  <div className="displayInfo">
+                                    <article>
+                                      <input
+                                        type="checkbox"
+                                        name="checkBox"
+                                        id="one"
+                                        checked={chkStatus ? true : false}
+                                        defaultChecked={chkStatus ? true : false}
+                                        readOnly
+                                      />
+                                      <label htmlFor="one"></label>
+                                    </article>
+                                    <strong>{oneItem.title}</strong>
+                                  </div>
+                                </li>
+                                <li>
+                                  <article>{oneItem.udate}</article>
+                                  <article>{oneItem.author}</article>
+                                  <article>{oneItem.cdate}</article>
+                                  <article>{oneItem.volume}</article>
+                                </li>
+                              </ul>
+                              {oneToggleStatus[`${rootIndex}-${oneIndex}`] && (
+                                <ul className="twoDepthWrap">
+                                  {oneItem.child?.map((twoItem, twoIndex) => (
+                                    <li key={twoIndex}>
+                                      <ul className="twoList">
+                                        <li>
+                                          <div className="utilWrap">
+                                            <div
+                                              className="arrowWrap"
+                                              onClick={() => {
+                                                setTwoToggleStatus((prevState) => ({
+                                                  ...prevState,
+                                                  [`${rootIndex}-${oneIndex}-${twoIndex}`]:
+                                                    !prevState[`${rootIndex}-${oneIndex}-${twoIndex}`],
+                                                }));
+                                              }}
+                                            >
+                                              {twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? (
+                                                <Image
+                                                  src="/images/arrow/arrow_drop_down.svg"
+                                                  alt="arrow"
+                                                  priority
+                                                  width={24}
+                                                  height={24}
+                                                />
+                                              ) : (
+                                                <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                                              )}
+                                            </div>
+                                            <div>
+                                              <input type="checkbox" name="checkBox" id="two" />
+                                              <label htmlFor="two"></label>
+                                            </div>
+                                          </div>
+                                          <div className="displayInfo">
+                                            <div className="channelSymbol">
+                                              <p className="tag">{twoItem.category}</p>
+                                            </div>
+                                            <strong>{twoItem.name}</strong>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <article>{oneItem.udate}</article>
+                                          <article>{oneItem.author}</article>
+                                          <article>{oneItem.cdate}</article>
+                                          <article>{twoItem.volume}</article>
+                                        </li>
+                                      </ul>
+                                      <FolderTree
+                                        oneItem={oneItem}
+                                        twoItem={twoItem}
+                                        rootIndex={rootIndex}
+                                        oneIndex={oneIndex}
+                                        twoIndex={twoIndex}
+                                        twoToggleStatus={twoToggleStatus}
+                                      />
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  ) : (
                     <ul className="rootList">
                       <li>
                         <div className="utilWrap">
@@ -72,8 +228,8 @@ const Dynamic = () => {
                               <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
                             )}
                           </div>
-                          <div>
-                            <Image src="/images/folder/dessert.png" alt="GroupFolder" priority width={24} height={24} />
+                          <div className="channelSymbol">
+                            <span className={`setting ${rootItem.type}`}></span>
                           </div>
                         </div>
                         <div className="displayInfo">
@@ -91,120 +247,14 @@ const Dynamic = () => {
                         <article>{rootItem.volume}</article>
                       </li>
                     </ul>
-                    {rootToggleStatus[rootIndex] && (
-                      <ul className="oneDepthWrap">
-                        {rootItem.file.map((oneItem, oneIndex) => (
-                          <li key={oneIndex}>
-                            <ul className="oneList">
-                              <li>
-                                <div className="utilWrap">
-                                  <div
-                                    className="arrowWrap"
-                                    onClick={() => {
-                                      setOneToggleStatus((prevState) => ({
-                                        ...prevState,
-                                        [`${rootIndex}-${oneIndex}`]: !prevState[`${rootIndex}-${oneIndex}`],
-                                      }));
-                                    }}
-                                  >
-                                    {oneToggleStatus[`${rootIndex}-${oneIndex}`] ? (
-                                      <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
-                                    ) : (
-                                      <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
-                                    )}
-                                  </div>
-                                  <div className="channelSymbol">
-                                    <span className={`setting ${oneItem.type}`}></span>
-                                  </div>
-                                </div>
-                                <div className="displayInfo">
-                                  <article>
-                                    <input
-                                      type="checkbox"
-                                      name="checkBox"
-                                      id="one"
-                                      checked={chkStatus ? true : false}
-                                      defaultChecked={chkStatus ? true : false}
-                                      readOnly
-                                    />
-                                    <label htmlFor="one"></label>
-                                  </article>
-                                  <strong>{oneItem.title}</strong>
-                                </div>
-                              </li>
-                              <li>
-                                <article>{oneItem.udate}</article>
-                                <article>{oneItem.author}</article>
-                                <article>{oneItem.cdate}</article>
-                                <article>{oneItem.volume}</article>
-                              </li>
-                            </ul>
-                            {oneToggleStatus[`${rootIndex}-${oneIndex}`] && (
-                              <ul className="twoDepthWrap">
-                                {oneItem.child?.map((twoItem, twoIndex) => (
-                                  <li key={twoIndex}>
-                                    <ul className="twoList">
-                                      <li>
-                                        <div className="utilWrap">
-                                          <div
-                                            className="arrowWrap"
-                                            onClick={() => {
-                                              setTwoToggleStatus((prevState) => ({
-                                                ...prevState,
-                                                [`${rootIndex}-${oneIndex}-${twoIndex}`]:
-                                                  !prevState[`${rootIndex}-${oneIndex}-${twoIndex}`],
-                                              }));
-                                            }}
-                                          >
-                                            {twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? (
-                                              <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
-                                            ) : (
-                                              <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
-                                            )}
-                                          </div>
-                                          <div>
-                                            <input type="checkbox" name="checkBox" id="two" />
-                                            <label htmlFor="two"></label>
-                                          </div>
-                                        </div>
-                                        <div className="displayInfo">
-                                          <div className="channelSymbol">
-                                            <p className="tag">{twoItem.category}</p>
-                                          </div>
-                                          <strong>{twoItem.name}</strong>
-                                        </div>
-                                      </li>
-                                      <li>
-                                        <article>{oneItem.udate}</article>
-                                        <article>{oneItem.author}</article>
-                                        <article>{oneItem.cdate}</article>
-                                        <article>{twoItem.volume}</article>
-                                      </li>
-                                    </ul>
-                                    <FolderTree
-                                      oneItem={oneItem}
-                                      twoItem={twoItem}
-                                      rootIndex={rootIndex}
-                                      oneIndex={oneIndex}
-                                      twoIndex={twoIndex}
-                                      twoToggleStatus={twoToggleStatus}
-                                    />
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </>
-                ) : (
-                  <></>
-                )}
-              </li>
-            ))}
-        </ul>
+                  )}
+                </li>
+              ))}
+          </ul>
+        </div>
       </section>
+
+      <Footer>인터렉션-바텀</Footer>
     </Container>
   );
 };

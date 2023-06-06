@@ -16,12 +16,30 @@ export const Container = styled.section`
     max-height: 100%;
     width: 100%;
     min-height: 700px;
+    background-color: skyblue;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
 
     strong {
       display: block;
       font-size: 32rem;
       line-height: 32rem;
       padding-top: 4rem;
+    }
+  }
+
+  .interaction {
+    .interArea {
+      background-color: bisque;
+      min-height: 100px;
+      font-size: 3.2rem;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
     }
   }
 
@@ -450,4 +468,27 @@ export const Container = styled.section`
       }
     }
   }
+`;
+
+export const Header = styled.header`
+  max-width: 100%;
+  min-height: 100px;
+  background-color: coral;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+`;
+
+export const Footer = styled.footer`
+  max-width: 100%;
+  min-height: 100px;
+  font-size: 3.2rem;
+  font-weight: 700;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: lightgreen;
 `;
