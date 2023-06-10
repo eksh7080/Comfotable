@@ -8,6 +8,7 @@ import { Container, Footer, Header } from 'styles/folder/dynamicS';
 import FolderTree from 'components/FolderTree';
 import ListAllItems from 'db/listAll.json';
 import CAKE from '../public/images/dessert/cake.png';
+import FileTree from 'components/FileTree';
 
 const Dynamic = () => {
   const router = useRouter();
@@ -124,14 +125,7 @@ const Dynamic = () => {
                                   </div>
                                   <div className="displayInfo">
                                     <article>
-                                      <input
-                                        type="checkbox"
-                                        name="checkBox"
-                                        id="one"
-                                        checked={chkStatus ? true : false}
-                                        defaultChecked={chkStatus ? true : false}
-                                        readOnly
-                                      />
+                                      <input type="checkbox" name="checkBox" id="one" readOnly />
                                       <label htmlFor="one"></label>
                                     </article>
                                     <strong>{oneItem.title}</strong>
@@ -210,43 +204,53 @@ const Dynamic = () => {
                       )}
                     </>
                   ) : (
-                    <ul className="rootList">
-                      <li>
-                        <div className="utilWrap">
-                          <div
-                            className="arrowWrap"
-                            onClick={() => {
-                              setRootToggleStatus((prevState) => ({
-                                ...prevState,
-                                [rootIndex]: !prevState[rootIndex],
-                              }));
-                            }}
-                          >
-                            {rootToggleStatus[rootIndex] ? (
-                              <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
-                            ) : (
-                              <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
-                            )}
+                    <>
+                      <ul className="rootList">
+                        <li>
+                          <div className="utilWrap">
+                            <div
+                              className="arrowWrap"
+                              onClick={() => {
+                                setRootToggleStatus((prevState) => ({
+                                  ...prevState,
+                                  [rootIndex]: !prevState[rootIndex],
+                                }));
+                              }}
+                            >
+                              {rootToggleStatus[rootIndex] ? (
+                                <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
+                              ) : (
+                                <Image src="/images/arrow/arrow_drop_up.svg" alt="arrow" priority width={24} height={24} />
+                              )}
+                            </div>
+                            <div className="channelSymbol">
+                              <span className={`setting ${rootItem.type}`}></span>
+                            </div>
                           </div>
-                          <div className="channelSymbol">
-                            <span className={`setting ${rootItem.type}`}></span>
+                          <div className="displayInfo">
+                            <article>
+                              <input type="checkbox" name="checkBox" id="root" onChange={(e) => onChangeBox(e)} />
+                              <label htmlFor="root"></label>
+                            </article>
+                            <strong>{rootItem.title}</strong>
                           </div>
-                        </div>
-                        <div className="displayInfo">
-                          <article>
-                            <input type="checkbox" name="checkBox" id="root" onChange={(e) => onChangeBox(e)} />
-                            <label htmlFor="root"></label>
-                          </article>
-                          <strong>{rootItem.title}</strong>
-                        </div>
-                      </li>
-                      <li>
-                        <article>{rootItem.udate}</article>
-                        <article>{rootItem.author}</article>
-                        <article>{rootItem.cdate}</article>
-                        <article>{rootItem.volume}</article>
-                      </li>
-                    </ul>
+                        </li>
+                        <li>
+                          <article>{rootItem.udate}</article>
+                          <article>{rootItem.author}</article>
+                          <article>{rootItem.cdate}</article>
+                          <article>{rootItem.volume}</article>
+                        </li>
+                      </ul>
+                      <FileTree
+                        rootItem={rootItem}
+                        // twoItem={twoItem}
+                        rootIndex={rootIndex}
+                        // oneIndex={oneIndex}
+                        // twoIndex={twoIndex}
+                        oneToggleStatus={oneToggleStatus}
+                      />
+                    </>
                   )}
                 </li>
               ))}

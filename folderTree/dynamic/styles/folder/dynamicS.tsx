@@ -147,6 +147,15 @@ export const Container = styled.section`
                 flex-direction: row;
                 align-items: center;
                 gap: 0.4rem;
+
+                .channelSymbol {
+                  .tag {
+                    font-weight: 600;
+                    padding: 0.8rem 1.6rem;
+                    border-radius: 0.6rem;
+                    border: 1px solid #87cefa;
+                  }
+                }
               }
             }
 
