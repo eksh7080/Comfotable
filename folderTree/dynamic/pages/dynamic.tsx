@@ -23,7 +23,7 @@ const Dynamic = () => {
     retry: 0,
     refetchOnWindowFocus: false,
     onSuccess(item) {
-      setListItems([...item.file, ...item.folder]);
+      setListItems([...item.folder, ...item.file]);
 
       console.log(item.file, 'item', item);
     },
@@ -39,7 +39,7 @@ const Dynamic = () => {
   };
 
   console.log(listItems, '리스트 아이템');
-  console.log(typeof rootToggleStatus, ' 토글 스테이터스 ', oneToggleStatus);
+  console.log(rootToggleStatus, ' 토글 스테이터스 ', oneToggleStatus);
 
   return (
     <Container>
@@ -60,18 +60,18 @@ const Dynamic = () => {
                 <li key={rootIndex}>
                   {rootItem.isfolder === 'Y' ? (
                     <>
-                      <ul className="rootList">
+                      <ul
+                        className="rootList"
+                        onClick={() => {
+                          setRootToggleStatus((prevState) => ({
+                            ...prevState,
+                            [rootIndex]: !prevState[rootIndex],
+                          }));
+                        }}
+                      >
                         <li>
                           <div className="utilWrap">
-                            <div
-                              className="arrowWrap"
-                              onClick={() => {
-                                setRootToggleStatus((prevState) => ({
-                                  ...prevState,
-                                  [rootIndex]: !prevState[rootIndex],
-                                }));
-                              }}
-                            >
+                            <div className="arrowWrap">
                               {rootToggleStatus[rootIndex] ? (
                                 <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
                               ) : (
@@ -101,18 +101,18 @@ const Dynamic = () => {
                         <ul className="oneDepthWrap">
                           {rootItem.file.map((oneItem, oneIndex) => (
                             <li key={oneIndex}>
-                              <ul className="oneList">
+                              <ul
+                                className="oneList"
+                                onClick={() => {
+                                  setOneToggleStatus((prevState) => ({
+                                    ...prevState,
+                                    [`${rootIndex}-${oneIndex}`]: !prevState[`${rootIndex}-${oneIndex}`],
+                                  }));
+                                }}
+                              >
                                 <li>
                                   <div className="utilWrap">
-                                    <div
-                                      className="arrowWrap"
-                                      onClick={() => {
-                                        setOneToggleStatus((prevState) => ({
-                                          ...prevState,
-                                          [`${rootIndex}-${oneIndex}`]: !prevState[`${rootIndex}-${oneIndex}`],
-                                        }));
-                                      }}
-                                    >
+                                    <div className="arrowWrap">
                                       {oneToggleStatus[`${rootIndex}-${oneIndex}`] ? (
                                         <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
                                       ) : (
@@ -142,19 +142,18 @@ const Dynamic = () => {
                                 <ul className="twoDepthWrap">
                                   {oneItem.child?.map((twoItem, twoIndex) => (
                                     <li key={twoIndex}>
-                                      <ul className="twoList">
+                                      <ul
+                                        className="twoList"
+                                        onClick={() => {
+                                          setTwoToggleStatus((prevState) => ({
+                                            ...prevState,
+                                            [`${rootIndex}-${oneIndex}-${twoIndex}`]: !prevState[`${rootIndex}-${oneIndex}-${twoIndex}`],
+                                          }));
+                                        }}
+                                      >
                                         <li>
                                           <div className="utilWrap">
-                                            <div
-                                              className="arrowWrap"
-                                              onClick={() => {
-                                                setTwoToggleStatus((prevState) => ({
-                                                  ...prevState,
-                                                  [`${rootIndex}-${oneIndex}-${twoIndex}`]:
-                                                    !prevState[`${rootIndex}-${oneIndex}-${twoIndex}`],
-                                                }));
-                                              }}
-                                            >
+                                            <div className="arrowWrap">
                                               {twoToggleStatus[`${rootIndex}-${oneIndex}-${twoIndex}`] ? (
                                                 <Image
                                                   src="/images/arrow/arrow_drop_down.svg"
@@ -205,18 +204,18 @@ const Dynamic = () => {
                     </>
                   ) : (
                     <>
-                      <ul className="rootList">
+                      <ul
+                        className="rootList"
+                        onClick={() => {
+                          setRootToggleStatus((prevState) => ({
+                            ...prevState,
+                            [rootIndex]: !prevState[rootIndex],
+                          }));
+                        }}
+                      >
                         <li>
                           <div className="utilWrap">
-                            <div
-                              className="arrowWrap"
-                              onClick={() => {
-                                setRootToggleStatus((prevState) => ({
-                                  ...prevState,
-                                  [rootIndex]: !prevState[rootIndex],
-                                }));
-                              }}
-                            >
+                            <div className="arrowWrap">
                               {rootToggleStatus[rootIndex] ? (
                                 <Image src="/images/arrow/arrow_drop_down.svg" alt="arrow" priority width={24} height={24} />
                               ) : (
@@ -244,10 +243,8 @@ const Dynamic = () => {
                       </ul>
                       <FileTree
                         rootItem={rootItem}
-                        // twoItem={twoItem}
                         rootIndex={rootIndex}
-                        // oneIndex={oneIndex}
-                        // twoIndex={twoIndex}
+                        rootToggleStatus={rootToggleStatus}
                         oneToggleStatus={oneToggleStatus}
                       />
                     </>
