@@ -6,6 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# json
+list.json
+listAll.json
+
 # mac
 .DS_Store
 
