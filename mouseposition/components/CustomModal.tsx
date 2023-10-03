@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 const layout = {
+  position: 'absolute',
   backgroundColor: 'white',
   border: '1px solid black',
   borderRadius: '6px',
@@ -15,7 +16,7 @@ const font = {
 
 const CustomModal = () => {
   return (
-    <section css={{ ...layout }}>
+    <section css={{ ...layout }} id="modal">
       <h1 css={{ ...font }}>마우스 컴포넌트</h1>
     </section>
   );
