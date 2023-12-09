@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { Fragment } from 'react';
 
 const layout = {
   position: 'absolute',
@@ -16,9 +17,14 @@ const font = {
 
 const CustomModal = () => {
   return (
-    <section css={{ ...layout }} id="modal">
-      <h1 css={{ ...font }}>마우스 컴포넌트</h1>
-    </section>
+    <Fragment>
+      <section css={{ ...layout }} id="absolute">
+        <h1 css={{ ...font }}>절대경로 마우스 컴포넌트</h1>
+      </section>
+      <section css={{ ...layout }} id="relative">
+        <b css={{ ...font }}>상대경로 마우스 컴포넌트</b>
+      </section>
+    </Fragment>
   );
 };
 

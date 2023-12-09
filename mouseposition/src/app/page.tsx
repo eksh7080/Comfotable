@@ -28,7 +28,7 @@ const Home = () => {
   };
 
   const onToggleModal = () => {
-    const id = document.getElementById('modal');
+    const id = document.getElementById('absolute');
 
     if (id) {
       id.style.display = 'block';
