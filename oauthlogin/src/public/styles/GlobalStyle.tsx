@@ -1,8 +1,6 @@
-import { css, Global } from '@emotion/react';
+import { createGlobalStyle } from 'styled-components';
 
-export const globalStyles = (
-  <Global
-    styles={css`
+const GlobalStyles = createGlobalStyle`
       html,
       body,
       div,
@@ -76,6 +74,6 @@ export const globalStyles = (
         font-size: 62.5%;
         box-sizing: border-box;
       }
-    `}
-  />
-);
+`;
+
+export default GlobalStyles;
