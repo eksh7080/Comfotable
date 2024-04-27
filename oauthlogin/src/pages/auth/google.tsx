@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation';
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType, NextPage } from 'next/types';
 import axios from 'axios';
 import { homeRedirect, loginRedirect, socialLoginApi } from '@/util/auth';
@@ -9,7 +8,6 @@ const GoogleRedirectPage: NextPage = ({ userEmail, access_token }: InferGetServe
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }: GetServerSidePropsContext) => {
-  console.log(req.headers, '------------------------------------------------');
   const getLoginToken = await axios({
     method: 'POST',
     url: 'https://oauth2.googleapis.com/token',
@@ -35,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }: Get
         access_token: getLoginToken.data.access_token,
       },
     });
-    console.log('GOOGLE 프로필 정보 조회', getProfile.data);
+    // console.log('GOOGLE 프로필 정보 조회', getProfile.data);
     if (getProfile) {
       return await socialLoginApi(getLoginToken.data, getProfile.data, 'GOOGLE');
     } else {

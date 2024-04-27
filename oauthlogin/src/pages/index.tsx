@@ -8,10 +8,10 @@ export default function Home() {
         <h1>이곳은 홈페이지 입니다.</h1>
         <ul>
           <li>
-            <label>LoginType {getCookie('provider')}</label>
+            <label>LoginType </label>
           </li>
           <li>
-            <label>소셜 토큰 유무 {getCookie('sns_access_token') === '' ? 'empty' : 'exist'}</label>
+            <label>소셜 토큰 유무 </label>
           </li>
         </ul>
       </section>
@@ -23,6 +23,6 @@ export default function Home() {
 //   const cookieList = req.headers.cookie ? cookieStringToObject(req.headers.cookie) : '';
 //   const findProviderCookieValue = Object.entries(cookieList).find((item: string[]) => item.includes('provider'));
 //   const findLoginCookieValue = Object.entries(cookieList).find((item: string[]) => item.includes('login_access_token'));
-//   console.log('로그인 리다이렉트 쿠키값', cookieList, findProviderCookieValue, findLoginCookieValue);
-//   return authGuard(findProviderCookieValue, findLoginCookieValue);
+//   // console.log('로그인 리다이렉트 쿠키값', cookieList, findProviderCookieValue, findLoginCookieValue);
+//   // return authGuard(findProviderCookieValue, findLoginCookieValue);
 // };

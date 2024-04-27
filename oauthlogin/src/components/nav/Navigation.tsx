@@ -22,7 +22,7 @@ const Navigation = () => {
     <NavContainer>
       <ul>
         {router.pathname.includes('/signin') ? (
-          <li onClick={() => removeCookie('provider')}>
+          <li>
             <Link href="/">로그아웃</Link>
           </li>
         ) : (
