@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }: Get
     },
   });
   if (getLoginToken) {
-    // console.log('GOOGLE 토큰 정보 조회', getLoginToken.data);
+    console.log('GOOGLE 토큰 정보 조회', getLoginToken.data);
     const getProfile = await axios({
       method: 'GET',
       url: 'https://www.googleapis.com/oauth2/v3/userinfo',
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }: Get
         access_token: getLoginToken.data.access_token,
       },
     });
-    // console.log('GOOGLE 프로필 정보 조회', getProfile.data);
+    console.log('GOOGLE 프로필 정보 조회', getProfile.data);
     if (getProfile) {
       return await socialLoginApi(getLoginToken.data, getProfile.data, 'GOOGLE');
     } else {

@@ -6,14 +6,6 @@ export default function Home() {
     <main>
       <section>
         <h1>이곳은 홈페이지 입니다.</h1>
-        <ul>
-          <li>
-            <label>LoginType </label>
-          </li>
-          <li>
-            <label>소셜 토큰 유무 </label>
-          </li>
-        </ul>
       </section>
     </main>
   );
