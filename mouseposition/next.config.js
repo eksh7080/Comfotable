@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-
+  reactStrictMode: true,
+  swcMinify: true,
   compiler: {
     emotion: true,
-  },
-  scripts: {
-    lint: 'next lint',
   },
 };
 
