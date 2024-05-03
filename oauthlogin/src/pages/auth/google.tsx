@@ -1,9 +1,10 @@
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType, NextPage } from 'next/types';
 import axios from 'axios';
-import { homeRedirect, loginRedirect, socialLoginApi } from '@/util/auth';
+import { loginRedirect, socialLoginApi } from '@/util/auth';
+import useSocialLoginRedirect from '@/hooks/useSocialLoginRedirect';
 
 const GoogleRedirectPage: NextPage = ({ userEmail, access_token }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  homeRedirect('google', userEmail, access_token);
+  useSocialLoginRedirect('google', userEmail, access_token);
   return <></>;
 };
 
@@ -35,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, query }: Get
     });
     console.log('GOOGLE 프로필 정보 조회', getProfile.data);
     if (getProfile) {
-      return await socialLoginApi(getLoginToken.data, getProfile.data, 'GOOGLE');
+      return await socialLoginApi('GOOGLE', getLoginToken.data, getProfile.data);
     } else {
       return loginRedirect('프로필 정보를 가져오지 못했습니다. 로그인페이지로 이동합니다.');
     }

@@ -1,12 +1,20 @@
 import Navigation from '@/components/nav/navigation';
 import { getCookie } from '@/util/cookie';
+import styled from 'styled-components';
+
+const MainContainer = styled.section`
+  h1 {
+    text-align: center;
+    font-size: 4rem;
+  }
+`;
 
 export default function Home() {
   return (
     <main>
-      <section>
+      <MainContainer>
         <h1>이곳은 홈페이지 입니다.</h1>
-      </section>
+      </MainContainer>
     </main>
   );
 }

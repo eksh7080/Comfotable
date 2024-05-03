@@ -6,6 +6,7 @@ import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsT
 import { authGuard } from '@/util/auth';
 import Image from 'next/image';
 import Naver from '@/public/images/naver.png';
+import Kakao from '@/public/images/kakao.png';
 
 /* ----------------------  style start ----------------------  */
 
@@ -54,6 +55,11 @@ const goAuthLogin = (type: string) => {
     case 'naver':
       const naverAuthURL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_NAVER_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}/naver&state=1234`;
       window.location.href = naverAuthURL;
+      break;
+    case 'kakao':
+      const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}/kakao`;
+      window.location.href = kakaoAuthURL;
+      break;
     default:
       break;
   }
@@ -72,6 +78,11 @@ const LoginPage = () => {
           <li>
             <button type="button" onClick={() => goAuthLogin('naver')}>
               <Image src={Naver} width={100} height={40} priority alt="naver login btn" />
+            </button>
+          </li>
+          <li>
+            <button type="button" onClick={() => goAuthLogin('kakao')}>
+              <Image src={Kakao} width={100} height={40} priority alt="kakao login btn" />
             </button>
           </li>
         </ul>
